@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 { 
     private Transform  target;
 
-    [SerializeField] private float      speed = 100;
+    [SerializeField] private float speed = 100;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         Vector3 cameraPosition = transform.position;
-        cameraPosition.y += 8f;
+        cameraPosition.y += 5f;
         transform.position = cameraPosition;
 
         Vector3 targetPosition = target.position;
