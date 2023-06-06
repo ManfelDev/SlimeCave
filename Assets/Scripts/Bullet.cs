@@ -14,11 +14,19 @@ public class Bullet : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D hitInfo)
 	{
-		// Enemy enemy = hitInfo.GetComponent<Enemy>();
-		// if (enemy != null)
-		// {
-		// 	enemy.TakeDamage(damage);
-		// }
+		// If bullet collides with enemy game object, destroy enemy
+        EnemyMovement enemy = hitInfo.GetComponent<EnemyMovement>();
+        if (enemy != null)
+        {
+            enemy.Destroy();
+            Destroy(gameObject);
+        }
+
+        // If collide with platform, destroy bullet
+        if (hitInfo.gameObject.tag == "Platform")
+        {
+            Destroy(gameObject);
+        }
 	}
 	
 }

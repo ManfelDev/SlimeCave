@@ -8,7 +8,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float        maxHealth = 100;
     [SerializeField] private HealthBar    healthBar;
     [SerializeField] private GameObject   player;
-    [SerializeField] private int          LevelNumber;
 
     private float              currentHealth;
 
@@ -29,7 +28,7 @@ public class PlayerManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             // Go to restart screen
-            SceneManager.LoadScene(LevelNumber);
+            SceneManager.LoadScene(2);
         }
 
         PowerUpEffects();
@@ -66,6 +65,8 @@ public class PlayerManager : MonoBehaviour
                 player.GetComponent<PlayerShooting>().enabled = true;
                 break;
             default:
+                // Change color to the initial one
+                player.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 // Turn off script Shoot.cs
                 player.GetComponent<PlayerShooting>().enabled = false;
                 break;
