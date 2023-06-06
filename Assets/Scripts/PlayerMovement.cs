@@ -20,13 +20,15 @@ public class PlayerMovement : MonoBehaviour
     private float       lastGroundTime;
     private float       lastJumpTime;
     private int         nJumps = 0;
-    private string      currentState;
+    private string      currentState;   
     private Rigidbody2D rb;
+    private PlayerManager playerManager;
     
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -127,5 +129,15 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(groundDetector.position - Vector3.right * groundDetectorExtraRadius, groundDetectorRadius);
         Gizmos.DrawSphere(groundDetector.position + Vector3.right * groundDetectorExtraRadius, groundDetectorRadius);
+    }
+
+     // If player collide with enemy, HP = 0
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            // Decrease HP
+            playerManager.TakeDamage(25);
+        }
     }
 }

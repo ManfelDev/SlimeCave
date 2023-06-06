@@ -12,6 +12,8 @@ public class Heal : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerManager.GiveHealth();
+            // Change power up to none
+            playerManager.TakePowerUp(0);
         }
     }
 }
