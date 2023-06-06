@@ -12,6 +12,6 @@ public class Timer : MonoBehaviour
 
     private void DamagePlayer()
     {
-        playerManager.TakeDamage(0.1f);
+        playerManager.TakeDamage(0.2f);
     }
 }
