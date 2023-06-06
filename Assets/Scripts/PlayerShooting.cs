@@ -6,6 +6,13 @@ public class PlayerShooting : MonoBehaviour
 {
 	[SerializeField] private Transform firePoint;
 	[SerializeField] private GameObject bulletPrefab;
+
+	private PlayerManager playerManager;
+
+	void Start ()
+	{
+		playerManager = FindObjectOfType<PlayerManager>();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,5 +25,6 @@ public class PlayerShooting : MonoBehaviour
 	void Shoot ()
 	{
 		Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+		playerManager.TakeDamage(5);
 	}
 }

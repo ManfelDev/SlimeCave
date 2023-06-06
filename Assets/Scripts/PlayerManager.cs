@@ -60,7 +60,7 @@ public class PlayerManager : MonoBehaviour
         {
             case 1:
                 // Change color to orange
-                player.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.4f, 0.2f, 1.0f);
+                player.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.2235294f, 0.05882353f, 1.0f);
                 // Turn on script Shoot.cs
                 player.GetComponent<PlayerShooting>().enabled = true;
                 break;

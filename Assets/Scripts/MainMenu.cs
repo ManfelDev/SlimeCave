@@ -9,4 +9,16 @@ public class MainMenu : MonoBehaviour
         // Quit the game
         Application.Quit();
     }
+
+    // Go to main menu
+    public void GoToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    // Go to How to Play
+    public void GoToHowToPlay()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+    }
 }
