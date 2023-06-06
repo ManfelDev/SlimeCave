@@ -9,7 +9,7 @@ public class ASyncLoader : MonoBehaviour
     [Header("Menu Screens")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject loadingScreen;
-    [SerializeField] private int        levelToLoad;
+
     public void LoadLevel(int levelToLoad)
     {
         mainMenu.SetActive(false);

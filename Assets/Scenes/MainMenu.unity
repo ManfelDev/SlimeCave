@@ -935,6 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 809429129}
   loadingScreen: {fileID: 1941618690}
+  levelToLoad: 3
 --- !u!4 &875676284
 Transform:
   m_ObjectHideFlags: 0
