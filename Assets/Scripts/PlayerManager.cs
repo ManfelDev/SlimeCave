@@ -8,11 +8,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float        maxHealth = 100;
     [SerializeField] private HealthBar    healthBar;
     [SerializeField] private GameObject   player;
+    [SerializeField] private int          LevelNumber;
 
     private float              currentHealth;
 
     // Get player's current health
     public float CurrentHealth { get => currentHealth; }
+    public int PowerUp { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +29,10 @@ public class PlayerManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             // Go to restart screen
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(LevelNumber);
         }
+
+        PowerUpEffects();
     }
 
     // Take damage
@@ -37,5 +41,34 @@ public class PlayerManager : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+    }
+
+    public void GiveHealth()
+    {
+        currentHealth = maxHealth;
+
+        healthBar.SetHealth(currentHealth);
+    }
+
+    public void TakePowerUp(int powerUp)
+    {
+        PowerUp = powerUp;
+    }
+
+    public void PowerUpEffects()
+    {
+        switch (PowerUp)
+        {
+            case 1:
+                // Change color to orange
+                player.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.4f, 0.2f, 1.0f);
+                // Turn on script Shoot.cs
+                player.GetComponent<PlayerShooting>().enabled = true;
+                break;
+            default:
+                // Turn off script Shoot.cs
+                player.GetComponent<PlayerShooting>().enabled = false;
+                break;
+        }
     }
 }
